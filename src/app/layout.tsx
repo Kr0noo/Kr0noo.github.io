@@ -58,7 +58,14 @@ try {
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="es" className={`${sans.variable} ${mono.variable} h-full`}>
+    // `suppressHydrationWarning`: el script de arriba añade `data-theme` antes
+    // de que React hidrate, así que el HTML del servidor y el DOM del cliente
+    // difieren a propósito. Solo silencia los atributos de este elemento.
+    <html
+      lang="es"
+      className={`${sans.variable} ${mono.variable} h-full`}
+      suppressHydrationWarning
+    >
       <head>
         <script dangerouslySetInnerHTML={{ __html: scriptTema }} />
       </head>

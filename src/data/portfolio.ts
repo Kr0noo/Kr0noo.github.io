@@ -106,7 +106,7 @@ export const experiencia: Experiencia[] = [
 export const stack = [
   {
     categoria: "Lenguajes",
-    items: ["Python", "JavaScript", "Java", "C#", "SQL"],
+    items: ["Python", "JavaScript", "TypeScript", "Java", "C#", "SQL"],
   },
   {
     categoria: "Backend",
@@ -124,7 +124,15 @@ export const stack = [
   },
   {
     categoria: "Datos & Cloud",
-    items: ["AWS", "MySQL", "Hostinger", "Linux", "Power BI", "Pandas"],
+    items: [
+      "AWS",
+      "Docker",
+      "MySQL",
+      "Hostinger",
+      "Linux",
+      "Power BI",
+      "Pandas",
+    ],
   },
   {
     categoria: "Metodologías & Herramientas",

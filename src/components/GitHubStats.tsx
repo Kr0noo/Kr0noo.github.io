@@ -10,7 +10,6 @@ type Datos = {
   repos: number;
   seguidores: number;
   estrellas: number;
-  lenguajes: { nombre: string; porcentaje: number }[];
 };
 
 type Estado =
@@ -19,7 +18,6 @@ type Estado =
   | { fase: "error" };
 
 type RepoApi = {
-  language: string | null;
   stargazers_count: number;
   fork: boolean;
 };
@@ -53,28 +51,12 @@ export default function GitHubStats() {
         const repos: RepoApi[] = await rRepos.json();
         const propios = repos.filter((r) => !r.fork);
 
-        const conteo = new Map<string, number>();
-        for (const repo of propios) {
-          if (!repo.language) continue;
-          conteo.set(repo.language, (conteo.get(repo.language) ?? 0) + 1);
-        }
-
-        const total = [...conteo.values()].reduce((a, b) => a + b, 0);
-        const lenguajes = [...conteo.entries()]
-          .sort((a, b) => b[1] - a[1])
-          .slice(0, 4)
-          .map(([nombre, n]) => ({
-            nombre,
-            porcentaje: Math.round((n / total) * 100),
-          }));
-
         setEstado({
           fase: "listo",
           datos: {
             repos: usuario.public_repos ?? propios.length,
             seguidores: usuario.followers ?? 0,
             estrellas: propios.reduce((a, r) => a + r.stargazers_count, 0),
-            lenguajes,
           },
         });
       } catch (error) {
@@ -136,41 +118,6 @@ export default function GitHubStats() {
           </div>
         ))}
       </dl>
-
-      {datos && datos.lenguajes.length > 0 && (
-        <div className="mt-5">
-          <p className="font-mono text-[11px] uppercase tracking-wider text-muted">
-            Lenguajes más usados
-          </p>
-
-          <div className="mt-3 flex h-2 overflow-hidden rounded-full bg-surface-2">
-            {datos.lenguajes.map((lenguaje, i) => (
-              <div
-                key={lenguaje.nombre}
-                style={{
-                  width: `${lenguaje.porcentaje}%`,
-                  // Degradado del acento al secundario según la posición.
-                  opacity: 1 - i * 0.22,
-                  background:
-                    i % 2 === 0 ? "var(--accent)" : "var(--accent-2)",
-                }}
-                title={`${lenguaje.nombre}: ${lenguaje.porcentaje} %`}
-              />
-            ))}
-          </div>
-
-          <ul className="mt-3 flex flex-wrap gap-x-4 gap-y-1">
-            {datos.lenguajes.map((lenguaje) => (
-              <li
-                key={lenguaje.nombre}
-                className="text-xs text-muted tabular-nums"
-              >
-                {lenguaje.nombre} · {lenguaje.porcentaje} %
-              </li>
-            ))}
-          </ul>
-        </div>
-      )}
     </div>
   );
 }
