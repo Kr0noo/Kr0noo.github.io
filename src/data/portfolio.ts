@@ -1,38 +1,50 @@
 /**
  * Fuente única de contenido del portafolio.
- * Edita SOLO este archivo para actualizar textos, proyectos y certificaciones.
+ * Edita SOLO este archivo para actualizar textos, experiencia y proyectos.
  */
 
 export const perfil = {
   nombre: "Adderly Valverde",
+  nombreCompleto: "Adderly Andrés Valverde Ramos",
   alias: "Kr0noo",
   iniciales: "AV",
-  titulo: "Desarrollador de Software & Cloud",
+  titulo: "Desarrollador FullStack Junior",
   // Se escriben y borran en bucle bajo el nombre, en el hero.
   roles: [
-    "Desarrollador Backend",
-    "Spring Boot & Java",
+    "Desarrollador FullStack",
+    "APIs con Django & Spring Boot",
     "Cloud con AWS",
-    "Full-Stack con Next.js",
+    "Frontend con Next.js",
   ],
-  avatar: "/avatar.jpg",
   resumen:
-    "Estudiante de Ingeniería de Sistemas (9.º ciclo) enfocado en construir APIs sólidas y desplegarlas en la nube. Busco prácticas preprofesionales donde aportar desde el primer sprint.",
-  ubicacion: "Perú",
+    "Desarrollo APIs RESTful escalables y las despliego en la nube. Actualmente en CodeaUni, construyendo con Django REST Framework, Next.js y AWS mientras termino Ingeniería de Sistemas.",
+  empresaActual: "CodeaUni",
+  ubicacion: "Lima, Perú",
   email: "adderlyramos2@gmail.com",
+  telefono: "+51 900 889 763",
+  telefonoEnlace: "+51900889763",
+  linkedin: "https://linkedin.com/in/adderly-andres-valverde-ramos-333057244/",
   github: "https://github.com/Kr0noo",
   instagram: "https://instagram.com/adderly.r06",
-  // Coloca tu CV en /public/cv.pdf y descomenta la línea de abajo para mostrar el botón.
-  // cv: "/cv.pdf",
-  cv: null as string | null,
-  disponible: true,
+  avatar: "/avatar.jpg",
+  cv: "/cv.pdf",
 };
 
 export const sobreMi = [
-  "Estoy en el 9.º ciclo de Ingeniería de Sistemas y llevo el desarrollo backend como eje: modelar datos, exponer una API limpia y dejarla corriendo en producción.",
-  "Trabajo principalmente con Java y Spring Boot, y complemento con Python y JavaScript. En el lado cloud me formé en AWS y he desplegado servicios con bases de datos gestionadas.",
-  "Me manejo con Scrum, me acomodo rápido a un equipo y me interesa especialmente la integración de IA en productos reales.",
+  "Soy desarrollador fullstack junior en CodeaUni, donde construyo y documento APIs RESTful con Django REST Framework y Next.js, y me encargo de la infraestructura cloud en AWS y de servidores Linux.",
+  "Antes hice prácticas en J&H Partners desarrollando y manteniendo aplicaciones web, integrando APIs REST y corrigiendo problemas de rendimiento. En ambos equipos trabajé con Scrum y RAD.",
+  "En paralelo curso el 10.º ciclo de Ingeniería de Sistemas en la Universidad Autónoma del Perú con 17/20 de promedio ponderado. Me interesa especialmente lo que cruza backend, cloud e inteligencia artificial.",
 ];
+
+export const educacion = {
+  institucion: "Universidad Autónoma del Perú",
+  carrera: "Ingeniería de Sistemas",
+  ciclo: "10.º ciclo",
+  periodo: "2022 – Presente",
+  ubicacion: "Lima, Perú",
+  promedio: "17 / 20",
+  reconocimientos: ["Doble finalista de Expotec 2025-1 y 2025-2"],
+};
 
 /** `numero` activa el contador animado; sin él, `valor` se muestra tal cual. */
 export const datosRapidos: {
@@ -41,37 +53,88 @@ export const datosRapidos: {
   numero?: number;
   sufijo?: string;
 }[] = [
-  { etiqueta: "Ciclo", valor: "9.º", numero: 9, sufijo: ".º" },
-  { etiqueta: "Certificaciones", valor: "4", numero: 4 },
-  { etiqueta: "Enfoque", valor: "Backend & Cloud" },
-  { etiqueta: "Estado", valor: "Buscando prácticas" },
+  { etiqueta: "Ciclo", valor: "10.º", numero: 10, sufijo: ".º" },
+  { etiqueta: "Promedio ponderado", valor: "17 / 20" },
+  { etiqueta: "Certificaciones", valor: "8", numero: 8 },
+  { etiqueta: "Idiomas", valor: "Español nativo · Inglés básico" },
+];
+
+export type Experiencia = {
+  puesto: string;
+  empresa: string;
+  periodo: string;
+  actual?: boolean;
+  logros: string[];
+  tecnologias: string[];
+};
+
+export const experiencia: Experiencia[] = [
+  {
+    puesto: "Desarrollador FullStack Junior",
+    empresa: "CodeaUni",
+    periodo: "Abr 2026 – Actualidad",
+    actual: true,
+    logros: [
+      "Implementación y documentación de APIs RESTful escalables con Django REST Framework y Next.js.",
+      "Gestión de proyectos con Scrum y RAD usando Jira, mejorando la coordinación del equipo.",
+      "Desarrollo de experiencias VR/XR en C# con sus respectivas integraciones por API.",
+      "Infraestructura cloud en AWS y Hostinger, con administración de servidores Linux.",
+    ],
+    tecnologias: [
+      "Django REST Framework",
+      "Next.js",
+      "C#",
+      "AWS",
+      "Linux",
+      "Jira",
+    ],
+  },
+  {
+    puesto: "Practicante de Desarrollador Web",
+    empresa: "J&H Partners",
+    periodo: "Ene 2026 – Jul 2026",
+    logros: [
+      "Desarrollo y mantenimiento de aplicaciones web en producción.",
+      "Integración y consumo de APIs REST para funcionalidades de backend.",
+      "Optimización y corrección de errores para mejorar rendimiento y experiencia de usuario.",
+      "Control de versiones y despliegues con Git y GitHub, bajo metodologías RAD y Scrum.",
+    ],
+    tecnologias: ["JavaScript", "APIs REST", "Git", "GitHub", "Scrum"],
+  },
 ];
 
 export const stack = [
   {
     categoria: "Lenguajes",
-    items: ["Java", "Python", "JavaScript", "TypeScript", "SQL", "Dart"],
+    items: ["Python", "JavaScript", "Java", "C#", "SQL"],
   },
   {
     categoria: "Backend",
-    items: ["Spring Boot", "Spring Data JPA", "API REST", "JWT"],
+    items: [
+      "Django REST Framework",
+      "Spring Boot",
+      "APIs REST",
+      "Microservicios",
+      ".NET",
+    ],
   },
   {
     categoria: "Frontend",
-    items: ["Next.js", "React", "Tailwind CSS", "Flutter"],
+    items: ["Next.js", "React", "HTML", "CSS", "Tailwind CSS"],
   },
   {
     categoria: "Datos & Cloud",
-    items: ["MySQL", "PostgreSQL", "Supabase", "AWS", "Docker"],
+    items: ["AWS", "MySQL", "Hostinger", "Linux", "Power BI", "Pandas"],
   },
   {
-    categoria: "Herramientas",
-    items: ["Git", "GitHub", "Postman", "Maven", "Scrum"],
+    categoria: "Metodologías & Herramientas",
+    items: ["Scrum", "RAD", "Jira", "Git", "GitHub", "Excel"],
   },
 ];
 
 export type Proyecto = {
   nombre: string;
+  tipo?: string;
   descripcion: string;
   detalles: string[];
   tecnologias: string[];
@@ -82,7 +145,31 @@ export type Proyecto = {
 
 export const proyectos: Proyecto[] = [
   {
+    nombre: "Diagnóstico de Neumonía con IA",
+    tipo: "Proyecto académico",
+    descripcion:
+      "Sistema que analiza radiografías de tórax con deep learning para apoyar el diagnóstico de neumonía.",
+    detalles: [
+      "Modelo de visión por computadora entrenado sobre imágenes de rayos X.",
+      "Procesamiento y limpieza del conjunto de datos con Python y Pandas.",
+    ],
+    tecnologias: ["Python", "Deep Learning", "Pandas"],
+    destacado: true,
+  },
+  {
+    nombre: "Sistema Web de Control de Inventario",
+    tipo: "Proyecto académico",
+    descripcion:
+      "Aplicación web para gestionar inventario y mantener los datos consistentes entre áreas.",
+    detalles: [
+      "Desarrollado en equipo de 3 personas con metodología ágil.",
+      "Mejoró la precisión de los datos de inventario en un 35 %.",
+    ],
+    tecnologias: ["JavaScript", "Python", "HTML", "CSS"],
+  },
+  {
     nombre: "Smart Recommendation Backend",
+    tipo: "Proyecto personal",
     descripcion:
       "API RESTful para gestionar usuarios y generar recomendaciones personalizadas a partir de su actividad.",
     detalles: [
@@ -92,7 +179,6 @@ export const proyectos: Proyecto[] = [
     ],
     tecnologias: ["Java", "Spring Boot", "Spring Data JPA", "MySQL", "Maven"],
     repo: "https://github.com/Kr0noo/smart-recommendation-backend",
-    destacado: true,
   },
 
   /* ─────────────────────────────────────────────────────────────
@@ -100,6 +186,7 @@ export const proyectos: Proyecto[] = [
 
   {
     nombre: "Nombre del proyecto",
+    tipo: "Proyecto personal",
     descripcion: "Una frase que explique qué resuelve.",
     detalles: [
       "Qué construiste y con qué decisión técnica.",
@@ -119,14 +206,30 @@ export type Certificacion = {
 };
 
 export const certificaciones: Certificacion[] = [
-  { nombre: "AWS Cloud Quest: Cloud Practitioner", emisor: "Amazon Web Services" },
-  { nombre: "AWS Cloud Quest: Generative AI Practitioner", emisor: "Amazon Web Services" },
+  { nombre: "AWS Academy Cloud Architecting", emisor: "AWS Academy" },
+  { nombre: "AWS Cloud Foundations", emisor: "AWS Academy" },
+  {
+    nombre: "AWS Cloud Quest: Cloud Practitioner",
+    emisor: "Amazon Web Services",
+  },
+  {
+    nombre: "AWS Cloud Quest: Generative AI Practitioner",
+    emisor: "Amazon Web Services",
+  },
+  { nombre: "Python Essentials 1", emisor: "Cisco / Python Institute" },
   { nombre: "Python Essentials 2", emisor: "Cisco / Python Institute" },
+  { nombre: "Python para Minería", emisor: "Formación complementaria" },
   { nombre: "Scrum Fundamentals Certified (SFC)", emisor: "SCRUMstudy" },
+];
+
+export const idiomas = [
+  { idioma: "Español", nivel: "Nativo" },
+  { idioma: "Inglés", nivel: "Básico" },
 ];
 
 export const navegacion = [
   { href: "#sobre-mi", texto: "Sobre mí" },
+  { href: "#experiencia", texto: "Experiencia" },
   { href: "#stack", texto: "Stack" },
   { href: "#proyectos", texto: "Proyectos" },
   { href: "#certificaciones", texto: "Certificaciones" },

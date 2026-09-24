@@ -7,7 +7,7 @@ export default function Skills() {
   return (
     <Section
       id="stack"
-      numero="02"
+      numero="03"
       titulo="Stack técnico"
       descripcion="Tecnologías con las que trabajo a diario y las que estoy incorporando."
     >

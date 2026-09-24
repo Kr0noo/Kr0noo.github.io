@@ -5,6 +5,7 @@ import {
   ArrowDownIcon,
   DownloadIcon,
   GitHubIcon,
+  LinkedInIcon,
   MailIcon,
 } from "./Icons";
 
@@ -29,15 +30,13 @@ export default function Hero() {
 
       <div className="mx-auto grid w-full max-w-5xl gap-12 px-4 py-20 sm:px-6 md:grid-cols-[1.5fr_auto] md:items-center">
         <div>
-          {perfil.disponible && (
-            <p className="mb-6 inline-flex items-center gap-2 rounded-full border border-border bg-surface px-3 py-1.5 text-xs text-muted">
-              <span className="relative flex h-2 w-2">
-                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent opacity-75" />
-                <span className="relative inline-flex h-2 w-2 rounded-full bg-accent" />
-              </span>
-              Disponible para prácticas preprofesionales
-            </p>
-          )}
+          <p className="mb-6 inline-flex items-center gap-2 rounded-full border border-border bg-surface px-3 py-1.5 text-xs text-muted">
+            <span className="relative flex h-2 w-2">
+              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent opacity-75" />
+              <span className="relative inline-flex h-2 w-2 rounded-full bg-accent" />
+            </span>
+            Desarrollador en {perfil.empresaActual} · {perfil.ubicacion}
+          </p>
 
           <p className="font-mono text-sm text-accent">Hola, soy</p>
 
@@ -62,24 +61,6 @@ export default function Hero() {
               <ArrowDownIcon />
             </a>
 
-            <a
-              href={`mailto:${perfil.email}`}
-              className="inline-flex items-center gap-2 rounded-xl border border-border bg-surface px-5 py-3 text-sm font-semibold transition hover:border-accent hover:text-accent"
-            >
-              <MailIcon className="h-4 w-4" />
-              Escríbeme
-            </a>
-
-            <a
-              href={perfil.github}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 rounded-xl border border-border bg-surface px-5 py-3 text-sm font-semibold transition hover:border-accent hover:text-accent"
-            >
-              <GitHubIcon className="h-4 w-4" />
-              GitHub
-            </a>
-
             {perfil.cv && (
               <a
                 href={perfil.cv}
@@ -90,6 +71,34 @@ export default function Hero() {
                 Descargar CV
               </a>
             )}
+
+            <a
+              href={`mailto:${perfil.email}`}
+              aria-label="Escríbeme por correo"
+              className="grid h-11 w-11 place-items-center rounded-xl border border-border bg-surface text-muted transition hover:border-accent hover:text-accent"
+            >
+              <MailIcon className="h-4 w-4" />
+            </a>
+
+            <a
+              href={perfil.linkedin}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="LinkedIn"
+              className="grid h-11 w-11 place-items-center rounded-xl border border-border bg-surface text-muted transition hover:border-accent hover:text-accent"
+            >
+              <LinkedInIcon className="h-4 w-4" />
+            </a>
+
+            <a
+              href={perfil.github}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="GitHub"
+              className="grid h-11 w-11 place-items-center rounded-xl border border-border bg-surface text-muted transition hover:border-accent hover:text-accent"
+            >
+              <GitHubIcon className="h-4 w-4" />
+            </a>
           </div>
         </div>
 

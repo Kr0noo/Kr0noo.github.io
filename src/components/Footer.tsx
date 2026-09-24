@@ -1,5 +1,5 @@
 import { perfil } from "@/data/portfolio";
-import { GitHubIcon, InstagramIcon, MailIcon } from "./Icons";
+import { GitHubIcon, InstagramIcon, LinkedInIcon, MailIcon } from "./Icons";
 
 export default function Footer() {
   return (
@@ -11,6 +11,17 @@ export default function Footer() {
         </p>
 
         <ul className="flex items-center gap-2">
+          <li>
+            <a
+              href={perfil.linkedin}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="LinkedIn"
+              className="grid h-9 w-9 place-items-center rounded-lg border border-border text-muted transition hover:border-accent hover:text-accent"
+            >
+              <LinkedInIcon className="h-4 w-4" />
+            </a>
+          </li>
           <li>
             <a
               href={perfil.github}

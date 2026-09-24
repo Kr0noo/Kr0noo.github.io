@@ -76,6 +76,12 @@ export default function Nav() {
         </ul>
 
         <div className="flex items-center gap-2">
+          <a
+            href="/cv/"
+            className="hidden rounded-lg border border-border bg-surface px-3 py-2 text-sm text-muted transition hover:border-accent hover:text-accent sm:block"
+          >
+            CV
+          </a>
           <ThemeToggle />
           <button
             type="button"

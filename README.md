@@ -8,6 +8,7 @@ exportado como sitio estático y desplegado automáticamente en GitHub Pages.
 ## Características
 
 - Exportación estática (`output: "export"`) — sin servidor, sin costo.
+- Página `/cv` con el currículum en HTML, más el PDF descargable.
 - Modo claro / oscuro con preferencia guardada y sin parpadeo al cargar.
 - Animaciones de entrada al hacer scroll, respetando `prefers-reduced-motion`.
 - Navegación con resaltado de la sección activa y menú móvil.
@@ -28,19 +29,23 @@ Todo el texto vive en **`src/data/portfolio.ts`**. No hace falta tocar los compo
 
 | Qué cambiar | Dónde |
 | --- | --- |
-| Nombre, título, resumen, email, redes | `perfil` |
+| Nombre, título, email, teléfono, redes | `perfil` |
+| Roles que rotan en el hero | `perfil.roles` |
 | Párrafos de "Sobre mí" | `sobreMi` |
+| Universidad, ciclo, promedio, premios | `educacion` |
 | Tarjetas de datos rápidos | `datosRapidos` |
+| Puestos de trabajo | `experiencia` |
 | Tecnologías por categoría | `stack` |
 | Proyectos | `proyectos` (hay una plantilla comentada al final) |
 | Certificaciones | `certificaciones` |
+| Idiomas | `idiomas` |
 
-### Añadir tu CV
+Todo esto alimenta a la vez la página principal y la página `/cv`.
 
-1. Copia tu PDF en `public/cv.pdf`.
-2. En `src/data/portfolio.ts`, cambia `cv: null` por `cv: "/cv.pdf"`.
+### Actualizar el CV en PDF
 
-El botón "Descargar CV" aparece solo cuando ese campo tiene valor.
+Reemplaza `public/cv.pdf`. El botón "Descargar CV" aparece mientras
+`perfil.cv` tenga valor; ponlo en `null` para ocultarlo.
 
 ## Despliegue
 

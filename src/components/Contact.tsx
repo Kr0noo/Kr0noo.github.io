@@ -1,5 +1,10 @@
 import { perfil } from "@/data/portfolio";
-import { GitHubIcon, InstagramIcon, MailIcon } from "./Icons";
+import {
+  GitHubIcon,
+  LinkedInIcon,
+  MailIcon,
+  PhoneIcon,
+} from "./Icons";
 import Reveal from "./Reveal";
 import Section from "./Section";
 
@@ -12,17 +17,24 @@ const enlaces = [
     externo: false,
   },
   {
+    etiqueta: "Teléfono",
+    valor: perfil.telefono,
+    href: `tel:${perfil.telefonoEnlace}`,
+    Icono: PhoneIcon,
+    externo: false,
+  },
+  {
+    etiqueta: "LinkedIn",
+    valor: "Adderly Valverde Ramos",
+    href: perfil.linkedin,
+    Icono: LinkedInIcon,
+    externo: true,
+  },
+  {
     etiqueta: "GitHub",
     valor: `@${perfil.alias}`,
     href: perfil.github,
     Icono: GitHubIcon,
-    externo: true,
-  },
-  {
-    etiqueta: "Instagram",
-    valor: "@adderly.r06",
-    href: perfil.instagram,
-    Icono: InstagramIcon,
     externo: true,
   },
 ];
@@ -31,12 +43,12 @@ export default function Contact() {
   return (
     <Section
       id="contacto"
-      numero="05"
+      numero="06"
       titulo="Hablemos"
-      descripcion="Estoy buscando prácticas preprofesionales. Si tienes una vacante o una idea que quieras construir, escríbeme."
+      descripcion="Si tienes un proyecto, una vacante o una idea que quieras construir, escríbeme."
     >
       <Reveal>
-        <div className="grid gap-4 sm:grid-cols-3">
+        <div className="grid gap-4 sm:grid-cols-2">
           {enlaces.map(({ etiqueta, valor, href, Icono, externo }) => (
             <a
               key={etiqueta}
@@ -44,17 +56,19 @@ export default function Contact() {
               {...(externo
                 ? { target: "_blank", rel: "noopener noreferrer" }
                 : {})}
-              className="group rounded-2xl border border-border bg-surface p-5 transition hover:border-accent/50"
+              className="group flex items-center gap-4 rounded-2xl border border-border bg-surface p-5 transition hover:-translate-y-1 hover:border-accent/50"
             >
-              <span className="grid h-10 w-10 place-items-center rounded-xl bg-accent-soft text-accent">
+              <span className="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-accent-soft text-accent">
                 <Icono className="h-5 w-5" />
               </span>
-              <p className="mt-4 font-mono text-xs uppercase tracking-wider text-muted">
-                {etiqueta}
-              </p>
-              <p className="mt-1 break-words text-sm font-semibold transition group-hover:text-accent">
-                {valor}
-              </p>
+              <div className="min-w-0">
+                <p className="font-mono text-xs uppercase tracking-wider text-muted">
+                  {etiqueta}
+                </p>
+                <p className="mt-0.5 break-words text-sm font-semibold transition group-hover:text-accent">
+                  {valor}
+                </p>
+              </div>
             </a>
           ))}
         </div>
@@ -63,21 +77,32 @@ export default function Contact() {
       <Reveal delay={140}>
         <div className="mt-6 rounded-2xl border border-border bg-gradient-to-br from-surface to-surface-2 p-8 text-center">
           <p className="text-lg font-semibold">
-            ¿Tienes una vacante para un practicante?
+            ¿Buscas un desarrollador para tu equipo?
           </p>
           <p className="mx-auto mt-2 max-w-md text-sm leading-relaxed text-muted">
-            Respondo en menos de 24 horas. Cuéntame del equipo y del stack, y te
-            envío mi CV.
+            Respondo en menos de 24 horas. Cuéntame del proyecto y del stack, y
+            te comparto mi disponibilidad.
           </p>
-          <a
-            href={`mailto:${perfil.email}?subject=${encodeURIComponent(
-              "Oportunidad de prácticas",
-            )}`}
-            className="mt-6 inline-flex items-center gap-2 rounded-xl bg-accent px-6 py-3 text-sm font-semibold text-bg transition hover:opacity-90"
-          >
-            <MailIcon className="h-4 w-4" />
-            Enviar correo
-          </a>
+          <div className="mt-6 flex flex-wrap items-center justify-center gap-3">
+            <a
+              href={`mailto:${perfil.email}?subject=${encodeURIComponent(
+                "Oportunidad laboral",
+              )}`}
+              className="inline-flex items-center gap-2 rounded-xl bg-accent px-6 py-3 text-sm font-semibold text-bg transition hover:opacity-90"
+            >
+              <MailIcon className="h-4 w-4" />
+              Enviar correo
+            </a>
+            <a
+              href={perfil.linkedin}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 rounded-xl border border-border bg-surface px-6 py-3 text-sm font-semibold transition hover:border-accent hover:text-accent"
+            >
+              <LinkedInIcon className="h-4 w-4" />
+              Conectar en LinkedIn
+            </a>
+          </div>
         </div>
       </Reveal>
     </Section>

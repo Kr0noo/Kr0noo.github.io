@@ -8,7 +8,7 @@ export default function Projects() {
   return (
     <Section
       id="proyectos"
-      numero="03"
+      numero="04"
       titulo="Proyectos"
       descripcion="Lo que he construido, con el detalle técnico de cada decisión."
     >
@@ -17,11 +17,18 @@ export default function Projects() {
           <Reveal key={proyecto.nombre} delay={i * 80}>
             <Spotlight className="group rounded-2xl border border-border bg-surface p-6 transition duration-300 hover:-translate-y-1 hover:border-accent/50 sm:p-8">
               <article>
-              {proyecto.destacado && (
-                <span className="mb-4 inline-block rounded-full bg-accent-soft px-2.5 py-1 font-mono text-xs text-accent">
-                  Destacado
-                </span>
-              )}
+              <div className="mb-4 flex flex-wrap items-center gap-2">
+                {proyecto.destacado && (
+                  <span className="rounded-full bg-accent-soft px-2.5 py-1 font-mono text-xs text-accent">
+                    Destacado
+                  </span>
+                )}
+                {proyecto.tipo && (
+                  <span className="rounded-full border border-border px-2.5 py-1 font-mono text-xs text-muted">
+                    {proyecto.tipo}
+                  </span>
+                )}
+              </div>
 
               <div className="flex flex-wrap items-start justify-between gap-4">
                 <h3 className="text-xl font-semibold tracking-tight sm:text-2xl">

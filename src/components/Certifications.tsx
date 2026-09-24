@@ -8,7 +8,7 @@ export default function Certifications() {
   return (
     <Section
       id="certificaciones"
-      numero="04"
+      numero="05"
       titulo="Certificaciones"
       descripcion="Formación complementaria en cloud, programación y metodologías ágiles."
     >
