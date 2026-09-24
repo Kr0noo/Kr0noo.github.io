@@ -1,0 +1,136 @@
+@import "tailwindcss";
+
+/* ── Tokens de color: claro por defecto ─────────────────────── */
+:root {
+  --bg: #f7f9fc;
+  --surface: #ffffff;
+  --surface-2: #f1f5f9;
+  --border: #e2e8f0;
+  --text: #0f172a;
+  --muted: #5a6b80;
+  --accent: #0d9488;
+  --accent-2: #0369a1;
+  --accent-soft: #ccfbf1;
+  --glow: rgba(13, 148, 136, 0.18);
+}
+
+/* ── Modo oscuro por preferencia del sistema ─────────────────── */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0a0e14;
+    --surface: #111820;
+    --surface-2: #161f2a;
+    --border: #1f2c3a;
+    --text: #e6edf3;
+    --muted: #8da0b5;
+    --accent: #2dd4bf;
+    --accent-2: #38bdf8;
+    --accent-soft: #0c3b38;
+    --glow: rgba(45, 212, 191, 0.14);
+  }
+}
+
+/* ── Modo oscuro forzado por el interruptor ──────────────────── */
+:root[data-theme="dark"] {
+  --bg: #0a0e14;
+  --surface: #111820;
+  --surface-2: #161f2a;
+  --border: #1f2c3a;
+  --text: #e6edf3;
+  --muted: #8da0b5;
+  --accent: #2dd4bf;
+  --accent-2: #38bdf8;
+  --accent-soft: #0c3b38;
+  --glow: rgba(45, 212, 191, 0.14);
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-border: var(--border);
+  --color-text: var(--text);
+  --color-muted: var(--muted);
+  --color-accent: var(--accent);
+  --color-accent-2: var(--accent-2);
+  --color-accent-soft: var(--accent-soft);
+  --font-sans: var(--font-sans-stack);
+  --font-mono: var(--font-mono-stack);
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5rem;
+}
+
+body {
+  background-color: var(--bg);
+  color: var(--text);
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: var(--accent);
+  color: var(--bg);
+}
+
+/* Foco visible y consistente para navegación por teclado */
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* ── Animación de entrada al hacer scroll ────────────────────── */
+.reveal {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.reveal[data-visible="true"] {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  .aurora {
+    animation: none !important;
+  }
+}
+
+/* ── Fondo decorativo del hero ───────────────────────────────── */
+.aurora {
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(80px);
+  opacity: 0.55;
+  pointer-events: none;
+  animation: flotar 14s ease-in-out infinite;
+}
+
+@keyframes flotar {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(0, -24px, 0) scale(1.08);
+  }
+}
+
+.cuadricula {
+  background-image:
+    linear-gradient(to right, var(--border) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--border) 1px, transparent 1px);
+  background-size: 56px 56px;
+  mask-image: radial-gradient(ellipse 70% 60% at 50% 0%, #000 40%, transparent 100%);
+}
