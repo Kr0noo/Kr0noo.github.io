@@ -249,3 +249,65 @@ body {
     animation: none !important;
   }
 }
+
+/* ── Impresión: el /cv debe salir legible en papel ───────────── */
+@media print {
+  /* Fuerza la paleta clara aunque el visitante tenga el tema oscuro. */
+  :root,
+  :root[data-theme="dark"] {
+    --bg: #ffffff;
+    --surface: #ffffff;
+    --surface-2: #ffffff;
+    --border: #cbd5e1;
+    --text: #0f172a;
+    --muted: #334155;
+    --accent: #0f766e;
+    --accent-2: #0369a1;
+    --accent-soft: #ffffff;
+    --glow: transparent;
+  }
+
+  body {
+    background: #fff;
+    color: #000;
+  }
+
+  /* Fuera lo que no aporta en papel. */
+  .sin-imprimir,
+  .aurora,
+  .cuadricula,
+  .marquesina-marco,
+  .progreso {
+    display: none !important;
+  }
+
+  .reveal {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  main {
+    max-width: 100% !important;
+    padding: 0 !important;
+  }
+
+  /* Evita cortar una tarjeta o un puesto a mitad de página. */
+  section,
+  article,
+  li {
+    break-inside: avoid;
+  }
+
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+
+  /* Los enlaces externos pierden el destino al imprimir: se escribe. */
+  a[href^="http"]::after {
+    content: " (" attr(href) ")";
+    font-size: 10px;
+    color: #475569;
+    word-break: break-all;
+  }
+}

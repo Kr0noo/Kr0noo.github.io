@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import JsonLd from "@/components/JsonLd";
 import { perfil } from "@/data/portfolio";
 import "./globals.css";
 
@@ -61,7 +62,10 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       <head>
         <script dangerouslySetInnerHTML={{ __html: scriptTema }} />
       </head>
-      <body className="min-h-full flex flex-col font-sans">{children}</body>
+      <body className="min-h-full flex flex-col font-sans">
+        <JsonLd />
+        {children}
+      </body>
     </html>
   );
 }

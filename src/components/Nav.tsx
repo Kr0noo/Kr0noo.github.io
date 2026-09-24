@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { navegacion, perfil } from "@/data/portfolio";
+import CommandPaletteButton from "./CommandPaletteButton";
 import ThemeToggle from "./ThemeToggle";
 
 export default function Nav() {
@@ -40,7 +41,7 @@ export default function Nav() {
 
   return (
     <header
-      className={`fixed inset-x-0 top-0 z-50 transition-colors duration-300 ${
+      className={`sin-imprimir fixed inset-x-0 top-0 z-50 transition-colors duration-300 ${
         desplazado
           ? "border-b border-border bg-bg/85 backdrop-blur-md"
           : "border-b border-transparent"
@@ -76,6 +77,7 @@ export default function Nav() {
         </ul>
 
         <div className="flex items-center gap-2">
+          <CommandPaletteButton />
           <a
             href="/cv/"
             className="hidden rounded-lg border border-border bg-surface px-3 py-2 text-sm text-muted transition hover:border-accent hover:text-accent sm:block"

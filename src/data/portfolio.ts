@@ -139,11 +139,52 @@ export type Proyecto = {
   detalles: string[];
   tecnologias: string[];
   repo?: string;
+  /** El código no es público: se muestra el aviso en vez del enlace a GitHub. */
+  privado?: boolean;
   demo?: string;
+  /** Captura en /public/proyectos/. Sin ella se dibuja una portada generada. */
+  imagen?: string;
   destacado?: boolean;
 };
 
 export const proyectos: Proyecto[] = [
+  {
+    nombre: "ShortCAM",
+    tipo: "En producción",
+    descripcion:
+      "Herramienta que analiza carpetas DCIM de cámaras y detecta huecos y solapes de cobertura entre varias fuentes de grabación.",
+    detalles: [
+      "Lee solo la cabecera de cada archivo —unos 300 bytes de un vídeo de 3 GB— así que nada se sube ni se copia: el análisis ocurre en el navegador.",
+      "Agrupa el material por sesión, carpeta, cámara (vía EXIF) o tipo de archivo, con umbral de hueco configurable.",
+      "Línea de tiempo con zoom, detección de duplicados y ajuste de desfase horario por carpeta para cámaras sin sincronizar.",
+      "Exporta informes a Excel, marcadores EDL y PDF, con soporte de 23.976 a 60 fps para DaVinci Resolve y Premiere.",
+    ],
+    tecnologias: [
+      "Next.js",
+      "TypeScript",
+      "File System Access API",
+      "EXIF",
+      "Web Workers",
+    ],
+    demo: "https://metaminingmedia.com/shortcam",
+    privado: true,
+    destacado: true,
+  },
+  {
+    nombre: "QR Codea",
+    tipo: "En producción",
+    descripcion:
+      "Generador de tarjetas de presentación digitales: crea códigos QR con vCard personalizables para networking profesional.",
+    detalles: [
+      "Flujo de tres pasos: datos de contacto, personalización del QR y descarga.",
+      "Personalización de formas, colores, logo y nivel de corrección de errores del código.",
+      "Exporta en PNG, SVG y JPG hasta 2000 px, con enlaces editables después de generarlos.",
+    ],
+    tecnologias: ["Next.js", "React", "vCard", "Canvas / SVG"],
+    demo: "https://metaminingmedia.com/qrcodea",
+    privado: true,
+    destacado: true,
+  },
   {
     nombre: "Diagnóstico de Neumonía con IA",
     tipo: "Proyecto académico",
@@ -154,7 +195,6 @@ export const proyectos: Proyecto[] = [
       "Procesamiento y limpieza del conjunto de datos con Python y Pandas.",
     ],
     tecnologias: ["Python", "Deep Learning", "Pandas"],
-    destacado: true,
   },
   {
     nombre: "Sistema Web de Control de Inventario",
@@ -193,8 +233,10 @@ export const proyectos: Proyecto[] = [
       "Un resultado concreto (rendimiento, usuarios, alcance).",
     ],
     tecnologias: ["Next.js", "Supabase"],
-    repo: "https://github.com/Kr0noo/mi-repo",
-    demo: "https://mi-demo.vercel.app",   // opcional
+    repo: "https://github.com/Kr0noo/mi-repo",  // omítelo si es privado
+    privado: true,                              // opcional
+    demo: "https://mi-demo.vercel.app",         // opcional
+    imagen: "/proyectos/mi-proyecto.png",       // opcional
   },
   ───────────────────────────────────────────────────────────── */
 ];

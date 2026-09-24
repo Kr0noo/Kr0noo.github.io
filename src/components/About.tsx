@@ -1,5 +1,6 @@
 import { datosRapidos, educacion, perfil, sobreMi } from "@/data/portfolio";
 import Counter from "./Counter";
+import GitHubStats from "./GitHubStats";
 import { GraduationIcon, StarIcon } from "./Icons";
 import Reveal from "./Reveal";
 import Section from "./Section";
@@ -61,8 +62,9 @@ export default function About() {
           </Reveal>
         </div>
 
-        <Reveal delay={120}>
-          <Spotlight className="h-full rounded-2xl border border-border bg-surface p-6 transition hover:border-accent/50">
+        <div className="space-y-4">
+          <Reveal delay={120}>
+          <Spotlight className="rounded-2xl border border-border bg-surface p-6 transition hover:border-accent/50">
             <dl className="space-y-4">
               {datosRapidos.map((dato) => (
                 <div key={dato.etiqueta}>
@@ -88,7 +90,12 @@ export default function About() {
               </div>
             </dl>
           </Spotlight>
-        </Reveal>
+          </Reveal>
+
+          <Reveal delay={200}>
+            <GitHubStats />
+          </Reveal>
+        </div>
       </div>
     </Section>
   );

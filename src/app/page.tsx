@@ -1,5 +1,6 @@
 import About from "@/components/About";
 import Certifications from "@/components/Certifications";
+import CommandPalette from "@/components/CommandPalette";
 import Contact from "@/components/Contact";
 import Experience from "@/components/Experience";
 import Footer from "@/components/Footer";
@@ -21,6 +22,7 @@ export default function Home() {
       </a>
 
       <ScrollProgress />
+      <CommandPalette />
       <Nav />
 
       <main id="contenido" className="flex-1">

@@ -1,5 +1,6 @@
 import { perfil, proyectos } from "@/data/portfolio";
-import { ExternalIcon, GitHubIcon } from "./Icons";
+import { ExternalIcon, GitHubIcon, LockIcon } from "./Icons";
+import ProjectCover from "./ProjectCover";
 import Reveal from "./Reveal";
 import Section from "./Section";
 import Spotlight from "./Spotlight";
@@ -16,79 +17,93 @@ export default function Projects() {
         {proyectos.map((proyecto, i) => (
           <Reveal key={proyecto.nombre} delay={i * 80}>
             <Spotlight className="group rounded-2xl border border-border bg-surface p-6 transition duration-300 hover:-translate-y-1 hover:border-accent/50 sm:p-8">
-              <article>
-              <div className="mb-4 flex flex-wrap items-center gap-2">
-                {proyecto.destacado && (
-                  <span className="rounded-full bg-accent-soft px-2.5 py-1 font-mono text-xs text-accent">
-                    Destacado
-                  </span>
-                )}
-                {proyecto.tipo && (
-                  <span className="rounded-full border border-border px-2.5 py-1 font-mono text-xs text-muted">
-                    {proyecto.tipo}
-                  </span>
-                )}
-              </div>
+              <article className="grid gap-6 md:grid-cols-[minmax(0,300px)_1fr] md:items-start">
+                <ProjectCover proyecto={proyecto} />
 
-              <div className="flex flex-wrap items-start justify-between gap-4">
-                <h3 className="text-xl font-semibold tracking-tight sm:text-2xl">
-                  {proyecto.nombre}
-                </h3>
+                <div className="min-w-0">
+                  <div className="flex flex-wrap items-center gap-2">
+                    {proyecto.destacado && (
+                      <span className="rounded-full bg-accent-soft px-2.5 py-1 font-mono text-xs text-accent">
+                        Destacado
+                      </span>
+                    )}
+                    {proyecto.tipo && (
+                      <span className="rounded-full border border-border px-2.5 py-1 font-mono text-xs text-muted">
+                        {proyecto.tipo}
+                      </span>
+                    )}
+                  </div>
 
-                <div className="flex items-center gap-2">
-                  {proyecto.repo && (
-                    <a
-                      href={proyecto.repo}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      aria-label={`Código de ${proyecto.nombre} en GitHub`}
-                      className="grid h-9 w-9 place-items-center rounded-lg border border-border text-muted transition hover:border-accent hover:text-accent"
-                    >
-                      <GitHubIcon className="h-4 w-4" />
-                    </a>
+                  <div className="mt-3 flex flex-wrap items-start justify-between gap-4">
+                    <h3 className="text-xl font-semibold tracking-tight sm:text-2xl">
+                      {proyecto.nombre}
+                    </h3>
+
+                    <div className="flex items-center gap-2">
+                      {proyecto.repo && (
+                        <a
+                          href={proyecto.repo}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          aria-label={`Código de ${proyecto.nombre} en GitHub`}
+                          className="grid h-9 w-9 place-items-center rounded-lg border border-border text-muted transition hover:border-accent hover:text-accent"
+                        >
+                          <GitHubIcon className="h-4 w-4" />
+                        </a>
+                      )}
+                      {proyecto.privado && (
+                        <span
+                          title="El código de este proyecto es privado"
+                          className="inline-flex items-center gap-1.5 rounded-lg border border-border px-2.5 py-2 font-mono text-xs text-muted"
+                        >
+                          <LockIcon className="h-3.5 w-3.5" />
+                          Código privado
+                        </span>
+                      )}
+                    </div>
+                  </div>
+
+                  <p className="mt-3 text-base leading-relaxed text-muted">
+                    {proyecto.descripcion}
+                  </p>
+
+                  {proyecto.detalles.length > 0 && (
+                    <ul className="mt-4 space-y-2">
+                      {proyecto.detalles.map((detalle) => (
+                        <li
+                          key={detalle}
+                          className="flex gap-3 text-sm leading-relaxed text-muted"
+                        >
+                          <span className="mt-2 h-1 w-1 shrink-0 rounded-full bg-accent" />
+                          {detalle}
+                        </li>
+                      ))}
+                    </ul>
                   )}
+
+                  <ul className="mt-6 flex flex-wrap gap-2">
+                    {proyecto.tecnologias.map((tec) => (
+                      <li
+                        key={tec}
+                        className="rounded-lg border border-border bg-surface-2 px-2.5 py-1 font-mono text-xs text-muted"
+                      >
+                        {tec}
+                      </li>
+                    ))}
+                  </ul>
+
                   {proyecto.demo && (
                     <a
                       href={proyecto.demo}
                       target="_blank"
                       rel="noopener noreferrer"
-                      aria-label={`Demo de ${proyecto.nombre}`}
-                      className="grid h-9 w-9 place-items-center rounded-lg border border-border text-muted transition hover:border-accent hover:text-accent"
+                      className="mt-6 inline-flex items-center gap-2 rounded-xl bg-accent px-4 py-2.5 text-sm font-semibold text-bg transition hover:opacity-90"
                     >
+                      Ver en vivo
                       <ExternalIcon />
                     </a>
                   )}
                 </div>
-              </div>
-
-              <p className="mt-3 text-base leading-relaxed text-muted">
-                {proyecto.descripcion}
-              </p>
-
-              {proyecto.detalles.length > 0 && (
-                <ul className="mt-4 space-y-2">
-                  {proyecto.detalles.map((detalle) => (
-                    <li
-                      key={detalle}
-                      className="flex gap-3 text-sm leading-relaxed text-muted"
-                    >
-                      <span className="mt-2 h-1 w-1 shrink-0 rounded-full bg-accent" />
-                      {detalle}
-                    </li>
-                  ))}
-                </ul>
-              )}
-
-              <ul className="mt-6 flex flex-wrap gap-2">
-                {proyecto.tecnologias.map((tec) => (
-                  <li
-                    key={tec}
-                    className="rounded-lg border border-border bg-surface-2 px-2.5 py-1 font-mono text-xs text-muted"
-                  >
-                    {tec}
-                  </li>
-                ))}
-                </ul>
               </article>
             </Spotlight>
           </Reveal>
