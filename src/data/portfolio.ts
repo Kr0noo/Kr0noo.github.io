@@ -8,6 +8,14 @@ export const perfil = {
   alias: "Kr0noo",
   iniciales: "AV",
   titulo: "Desarrollador de Software & Cloud",
+  // Se escriben y borran en bucle bajo el nombre, en el hero.
+  roles: [
+    "Desarrollador Backend",
+    "Spring Boot & Java",
+    "Cloud con AWS",
+    "Full-Stack con Next.js",
+  ],
+  avatar: "/avatar.jpg",
   resumen:
     "Estudiante de Ingeniería de Sistemas (9.º ciclo) enfocado en construir APIs sólidas y desplegarlas en la nube. Busco prácticas preprofesionales donde aportar desde el primer sprint.",
   ubicacion: "Perú",
@@ -26,10 +34,16 @@ export const sobreMi = [
   "Me manejo con Scrum, me acomodo rápido a un equipo y me interesa especialmente la integración de IA en productos reales.",
 ];
 
-export const datosRapidos = [
-  { etiqueta: "Ciclo", valor: "9.º" },
+/** `numero` activa el contador animado; sin él, `valor` se muestra tal cual. */
+export const datosRapidos: {
+  etiqueta: string;
+  valor: string;
+  numero?: number;
+  sufijo?: string;
+}[] = [
+  { etiqueta: "Ciclo", valor: "9.º", numero: 9, sufijo: ".º" },
+  { etiqueta: "Certificaciones", valor: "4", numero: 4 },
   { etiqueta: "Enfoque", valor: "Backend & Cloud" },
-  { etiqueta: "Certificaciones", valor: "4" },
   { etiqueta: "Estado", valor: "Buscando prácticas" },
 ];
 

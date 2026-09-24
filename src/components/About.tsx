@@ -1,6 +1,8 @@
 import { datosRapidos, perfil, sobreMi } from "@/data/portfolio";
+import Counter from "./Counter";
 import Reveal from "./Reveal";
 import Section from "./Section";
+import Spotlight from "./Spotlight";
 
 export default function About() {
   return (
@@ -15,31 +17,32 @@ export default function About() {
         </Reveal>
 
         <Reveal delay={120}>
-          <div className="rounded-2xl border border-border bg-surface p-6">
-            <div
-              className="grid h-16 w-16 place-items-center rounded-xl bg-gradient-to-br from-accent to-accent-2 text-xl font-bold text-bg"
-              aria-hidden="true"
-            >
-              {perfil.iniciales}
-            </div>
-
-            <dl className="mt-6 space-y-4">
+          <Spotlight className="h-full rounded-2xl border border-border bg-surface p-6 transition hover:border-accent/50">
+            <dl className="space-y-4">
               {datosRapidos.map((dato) => (
                 <div key={dato.etiqueta}>
                   <dt className="font-mono text-xs uppercase tracking-wider text-muted">
                     {dato.etiqueta}
                   </dt>
-                  <dd className="mt-0.5 text-sm font-semibold">{dato.valor}</dd>
+                  <dd className="mt-0.5 text-sm font-semibold">
+                    {dato.numero !== undefined ? (
+                      <Counter valor={dato.numero} sufijo={dato.sufijo} />
+                    ) : (
+                      dato.valor
+                    )}
+                  </dd>
                 </div>
               ))}
               <div>
                 <dt className="font-mono text-xs uppercase tracking-wider text-muted">
                   Ubicación
                 </dt>
-                <dd className="mt-0.5 text-sm font-semibold">{perfil.ubicacion}</dd>
+                <dd className="mt-0.5 text-sm font-semibold">
+                  {perfil.ubicacion}
+                </dd>
               </div>
             </dl>
-          </div>
+          </Spotlight>
         </Reveal>
       </div>
     </Section>

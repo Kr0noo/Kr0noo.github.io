@@ -2,6 +2,7 @@ import { certificaciones } from "@/data/portfolio";
 import { BadgeIcon, ExternalIcon } from "./Icons";
 import Reveal from "./Reveal";
 import Section from "./Section";
+import Spotlight from "./Spotlight";
 
 export default function Certifications() {
   return (
@@ -15,7 +16,7 @@ export default function Certifications() {
         {certificaciones.map((cert, i) => (
           <li key={cert.nombre}>
             <Reveal delay={i * 70}>
-              <div className="flex h-full items-start gap-4 rounded-2xl border border-border bg-surface p-5 transition hover:border-accent/50">
+              <Spotlight className="flex h-full items-start gap-4 rounded-2xl border border-border bg-surface p-5 transition hover:-translate-y-1 hover:border-accent/50">
                 <span className="mt-0.5 grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-accent-soft text-accent">
                   <BadgeIcon className="h-5 w-5" />
                 </span>
@@ -36,7 +37,7 @@ export default function Certifications() {
                     </a>
                   )}
                 </div>
-              </div>
+              </Spotlight>
             </Reveal>
           </li>
         ))}

@@ -134,3 +134,118 @@ body {
   background-size: 56px 56px;
   mask-image: radial-gradient(ellipse 70% 60% at 50% 0%, #000 40%, transparent 100%);
 }
+
+/* ── Anillo de gradiente giratorio del avatar ────────────────── */
+.anillo {
+  background: conic-gradient(
+    from 0deg,
+    var(--accent),
+    var(--accent-2),
+    transparent 55%,
+    var(--accent)
+  );
+  animation: girar 6s linear infinite;
+}
+
+@keyframes girar {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.flotar-suave {
+  animation: flotar-suave 6s ease-in-out infinite;
+}
+
+@keyframes flotar-suave {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+/* ── Cinta infinita de tecnologías ───────────────────────────── */
+.marquesina-marco {
+  mask-image: linear-gradient(
+    to right,
+    transparent,
+    #000 12%,
+    #000 88%,
+    transparent
+  );
+}
+
+.marquesina {
+  display: flex;
+  width: max-content;
+  animation: desplazar 38s linear infinite;
+}
+
+.marquesina-marco:hover .marquesina {
+  animation-play-state: paused;
+}
+
+@keyframes desplazar {
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+/* ── Brillo que sigue al cursor sobre las tarjetas ───────────── */
+.foco {
+  position: relative;
+  isolation: isolate;
+}
+
+.foco::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-radius: inherit;
+  opacity: 0;
+  transition: opacity 0.35s ease;
+  background: radial-gradient(
+    340px circle at var(--mx, 50%) var(--my, 50%),
+    var(--glow),
+    transparent 72%
+  );
+}
+
+.foco:hover::before,
+.foco:focus-within::before {
+  opacity: 1;
+}
+
+/* ── Cursor del texto que se escribe solo ────────────────────── */
+.cursor-escritura {
+  display: inline-block;
+  width: 3px;
+  margin-left: 2px;
+  background: var(--accent);
+  animation: parpadeo 1s steps(2, start) infinite;
+}
+
+@keyframes parpadeo {
+  50% {
+    opacity: 0;
+  }
+}
+
+/* ── Barra de progreso de lectura ────────────────────────────── */
+.progreso {
+  transform-origin: 0 50%;
+  background: linear-gradient(90deg, var(--accent), var(--accent-2));
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .anillo,
+  .flotar-suave,
+  .marquesina,
+  .cursor-escritura {
+    animation: none !important;
+  }
+}

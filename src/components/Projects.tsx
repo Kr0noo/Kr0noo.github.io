@@ -2,6 +2,7 @@ import { perfil, proyectos } from "@/data/portfolio";
 import { ExternalIcon, GitHubIcon } from "./Icons";
 import Reveal from "./Reveal";
 import Section from "./Section";
+import Spotlight from "./Spotlight";
 
 export default function Projects() {
   return (
@@ -14,7 +15,8 @@ export default function Projects() {
       <div className="grid gap-5">
         {proyectos.map((proyecto, i) => (
           <Reveal key={proyecto.nombre} delay={i * 80}>
-            <article className="group relative overflow-hidden rounded-2xl border border-border bg-surface p-6 transition hover:border-accent/50 sm:p-8">
+            <Spotlight className="group rounded-2xl border border-border bg-surface p-6 transition duration-300 hover:-translate-y-1 hover:border-accent/50 sm:p-8">
+              <article>
               {proyecto.destacado && (
                 <span className="mb-4 inline-block rounded-full bg-accent-soft px-2.5 py-1 font-mono text-xs text-accent">
                   Destacado
@@ -79,8 +81,9 @@ export default function Projects() {
                     {tec}
                   </li>
                 ))}
-              </ul>
-            </article>
+                </ul>
+              </article>
+            </Spotlight>
           </Reveal>
         ))}
 

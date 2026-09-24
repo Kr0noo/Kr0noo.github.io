@@ -1,6 +1,7 @@
 import { stack } from "@/data/portfolio";
 import Reveal from "./Reveal";
 import Section from "./Section";
+import Spotlight from "./Spotlight";
 
 export default function Skills() {
   return (
@@ -13,7 +14,7 @@ export default function Skills() {
       <div className="grid gap-4 sm:grid-cols-2">
         {stack.map((grupo, i) => (
           <Reveal key={grupo.categoria} delay={i * 70}>
-            <div className="h-full rounded-2xl border border-border bg-surface p-6 transition hover:border-accent/50">
+            <Spotlight className="h-full rounded-2xl border border-border bg-surface p-6 transition hover:-translate-y-1 hover:border-accent/50">
               <h3 className="font-mono text-xs uppercase tracking-wider text-accent">
                 {grupo.categoria}
               </h3>
@@ -27,7 +28,7 @@ export default function Skills() {
                   </li>
                 ))}
               </ul>
-            </div>
+            </Spotlight>
           </Reveal>
         ))}
       </div>
