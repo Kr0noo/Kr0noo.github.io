@@ -1,13 +1,13 @@
 import { perfil } from "@/data/portfolio";
-import Avatar from "./Avatar";
-import TypedRoles from "./TypedRoles";
+import Avatar from "@/components/ui/Avatar";
+import TypedRoles from "@/components/ui/TypedRoles";
 import {
   ArrowDownIcon,
   DownloadIcon,
   GitHubIcon,
   LinkedInIcon,
   MailIcon,
-} from "./Icons";
+} from "@/components/ui/Icons";
 
 export default function Hero() {
   return (

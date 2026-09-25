@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
-import Analytics from "@/components/Analytics";
-import JsonLd from "@/components/JsonLd";
+import Analytics from "@/components/seo/Analytics";
+import JsonLd from "@/components/seo/JsonLd";
 import { perfil } from "@/data/portfolio";
 import "./globals.css";
 

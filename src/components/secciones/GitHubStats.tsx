@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { perfil } from "@/data/portfolio";
-import { GitHubIcon, RepoIcon, StarOutlineIcon, UsersIcon } from "./Icons";
+import { GitHubIcon, RepoIcon, StarOutlineIcon, UsersIcon } from "@/components/ui/Icons";
 
 const USUARIO = "Kr0noo";
 

@@ -2,29 +2,10 @@
 
 import { useRouter } from "next/navigation";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
-import { navegacion, perfil } from "@/data/portfolio";
-import {
-  CheckIcon,
-  CopyIcon,
-  DownloadIcon,
-  GitHubIcon,
-  LinkedInIcon,
-  MailIcon,
-  PhoneIcon,
-  SearchIcon,
-  SectionIcon,
-  ThemeIcon,
-} from "./Icons";
-import { EVENTO_PALETA } from "./paleta";
+import { SearchIcon } from "@/components/ui/Icons";
+import { EVENTO_PALETA } from "@/lib/paleta";
+import { construirComandos } from "./comandos";
 
-type Comando = {
-  id: string;
-  texto: string;
-  grupo: string;
-  pistas?: string;
-  Icono: (p: { className?: string }) => React.ReactElement;
-  ejecutar: () => void;
-};
 
 /** Quita acentos y mayúsculas para que "seccion" encuentre "Sección". */
 function normalizar(texto: string) {
@@ -65,128 +46,16 @@ export default function CommandPalette() {
     }
   }, []);
 
-  const comandos: Comando[] = useMemo(() => {
-    const irA = (href: string) => () => {
-      cerrar();
-      document.querySelector(href)?.scrollIntoView({ behavior: "smooth" });
-    };
-
-    const abrir = (url: string) => () => {
-      cerrar();
-      window.open(url, "_blank", "noopener,noreferrer");
-    };
-
-    return [
-      ...navegacion.map((item) => ({
-        id: `ir-${item.href}`,
-        texto: `Ir a ${item.texto}`,
-        grupo: "Navegación",
-        Icono: SectionIcon,
-        ejecutar: irA(item.href),
-      })),
-      {
-        id: "cv",
-        texto: "Ver mi currículum",
-        grupo: "Navegación",
-        pistas: "cv resumen hoja de vida",
-        Icono: SectionIcon,
-        ejecutar: () => {
-          cerrar();
-          router.push("/cv/");
-        },
-      },
-      {
-        id: "descargar-cv",
-        texto: "Descargar CV en PDF",
-        grupo: "Acciones",
-        pistas: "pdf descargar",
-        Icono: DownloadIcon,
-        ejecutar: () => {
-          cerrar();
-          const a = document.createElement("a");
-          a.href = "/cv.pdf";
-          a.download = "CV-Adderly-Valverde.pdf";
-          a.click();
-        },
-      },
-      {
-        id: "copiar-correo",
-        texto: `Copiar correo · ${perfil.email}`,
-        grupo: "Acciones",
-        pistas: "email mail portapapeles",
-        Icono: copiado === "correo" ? CheckIcon : CopyIcon,
-        ejecutar: () => copiar(perfil.email, "correo"),
-      },
-      {
-        id: "copiar-telefono",
-        texto: `Copiar teléfono · ${perfil.telefono}`,
-        grupo: "Acciones",
-        pistas: "celular numero portapapeles",
-        Icono: copiado === "teléfono" ? CheckIcon : CopyIcon,
-        ejecutar: () => copiar(perfil.telefono, "teléfono"),
-      },
-      {
-        id: "escribir",
-        texto: "Escribirme un correo",
-        grupo: "Acciones",
-        pistas: "contacto mail",
-        Icono: MailIcon,
-        ejecutar: () => {
-          cerrar();
-          window.location.href = `mailto:${perfil.email}`;
-        },
-      },
-      {
-        id: "llamar",
-        texto: "Llamarme",
-        grupo: "Acciones",
-        pistas: "telefono celular",
-        Icono: PhoneIcon,
-        ejecutar: () => {
-          cerrar();
-          window.location.href = `tel:${perfil.telefonoEnlace}`;
-        },
-      },
-      {
-        id: "tema",
-        texto: "Cambiar tema claro / oscuro",
-        grupo: "Acciones",
-        pistas: "modo noche dark light",
-        Icono: ThemeIcon,
-        ejecutar: () => {
-          const raiz = document.documentElement;
-          const actual =
-            raiz.dataset.theme ??
-            (window.matchMedia("(prefers-color-scheme: dark)").matches
-              ? "dark"
-              : "light");
-          const siguiente = actual === "dark" ? "light" : "dark";
-          raiz.dataset.theme = siguiente;
-          try {
-            localStorage.setItem("tema", siguiente);
-          } catch {
-            /* almacenamiento bloqueado */
-          }
-          window.dispatchEvent(new Event("tema:cambio"));
-          cerrar();
-        },
-      },
-      {
-        id: "github",
-        texto: "Abrir GitHub",
-        grupo: "Enlaces",
-        Icono: GitHubIcon,
-        ejecutar: abrir(perfil.github),
-      },
-      {
-        id: "linkedin",
-        texto: "Abrir LinkedIn",
-        grupo: "Enlaces",
-        Icono: LinkedInIcon,
-        ejecutar: abrir(perfil.linkedin),
-      },
-    ];
-  }, [cerrar, copiar, copiado, router]);
+  const comandos = useMemo(
+    () =>
+      construirComandos({
+        cerrar,
+        copiar,
+        copiado,
+        irARuta: (ruta) => router.push(ruta),
+      }),
+    [cerrar, copiar, copiado, router],
+  );
 
   const filtrados = useMemo(() => {
     const q = normalizar(consulta.trim());
@@ -195,6 +64,16 @@ export default function CommandPalette() {
       normalizar(`${c.texto} ${c.grupo} ${c.pistas ?? ""}`).includes(q),
     );
   }, [comandos, consulta]);
+
+  /** Marca el primer comando de cada grupo, para pintar su cabecera. */
+  const conCabecera = useMemo(
+    () =>
+      filtrados.map((comando, i) => ({
+        comando,
+        abreGrupo: i === 0 || comando.grupo !== filtrados[i - 1].grupo,
+      })),
+    [filtrados],
+  );
 
   // Atajo global: ⌘K en Mac, Ctrl+K en el resto.
   useEffect(() => {
@@ -264,8 +143,6 @@ export default function CommandPalette() {
     }
   }
 
-  let grupoActual = "";
-
   return (
     <div
       className="fixed inset-0 z-[80] flex items-start justify-center bg-black/60 p-4 pt-[12vh] backdrop-blur-sm"
@@ -305,14 +182,12 @@ export default function CommandPalette() {
             </li>
           )}
 
-          {filtrados.map((comando, i) => {
-            const nuevoGrupo = comando.grupo !== grupoActual;
-            grupoActual = comando.grupo;
+          {conCabecera.map(({ comando, abreGrupo }, i) => {
             const marcado = i === indice;
 
             return (
               <li key={comando.id}>
-                {nuevoGrupo && (
+                {abreGrupo && (
                   <p className="px-3 pb-1 pt-3 font-mono text-[11px] uppercase tracking-wider text-muted">
                     {comando.grupo}
                   </p>

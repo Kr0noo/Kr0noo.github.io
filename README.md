@@ -28,6 +28,27 @@ npm run dev      # http://localhost:3000
 npm run build    # genera /out
 ```
 
+## Estructura
+
+```
+src/
+├── app/                  rutas y archivos de metadatos (sitemap, robots, og)
+├── components/
+│   ├── secciones/        cada bloque de la home, con contenido propio
+│   ├── layout/           el armazón siempre presente (nav, pie, paleta ⌘K)
+│   ├── ui/               piezas reutilizables sin contenido propio
+│   └── seo/              no pintan nada visible (JSON-LD, analítica)
+├── data/portfolio.ts     todo el contenido del sitio
+└── lib/                  constantes compartidas
+```
+
+Para saber dónde va un componente nuevo: **¿lleva contenido tuyo dentro?** →
+`secciones`. **¿Está siempre en pantalla?** → `layout`. **¿Serviría en
+cualquier otro proyecto?** → `ui`.
+
+No hay archivos `index.ts` de barril a propósito: añaden ficheros, esconden
+de dónde viene cada cosa y pueden provocar importaciones circulares.
+
 ## Cómo actualizar el contenido
 
 Todo el texto vive en **`src/data/portfolio.ts`**. No hace falta tocar los componentes.

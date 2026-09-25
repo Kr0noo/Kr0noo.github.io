@@ -4,9 +4,9 @@ import {
   LinkedInIcon,
   MailIcon,
   PhoneIcon,
-} from "./Icons";
-import Reveal from "./Reveal";
-import Section from "./Section";
+} from "@/components/ui/Icons";
+import Reveal from "@/components/ui/Reveal";
+import Section from "@/components/ui/Section";
 
 const enlaces = [
   {

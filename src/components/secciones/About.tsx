@@ -1,10 +1,10 @@
 import { datosRapidos, educacion, perfil, sobreMi } from "@/data/portfolio";
-import Counter from "./Counter";
+import Counter from "@/components/ui/Counter";
 import GitHubStats from "./GitHubStats";
-import { GraduationIcon, StarIcon } from "./Icons";
-import Reveal from "./Reveal";
-import Section from "./Section";
-import Spotlight from "./Spotlight";
+import { GraduationIcon, StarIcon } from "@/components/ui/Icons";
+import Reveal from "@/components/ui/Reveal";
+import Section from "@/components/ui/Section";
+import Spotlight from "@/components/ui/Spotlight";
 
 export default function About() {
   return (

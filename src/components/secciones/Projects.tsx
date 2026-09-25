@@ -1,9 +1,9 @@
 import { perfil, proyectos } from "@/data/portfolio";
-import { ExternalIcon, GitHubIcon, LockIcon } from "./Icons";
-import ProjectCover from "./ProjectCover";
-import Reveal from "./Reveal";
-import Section from "./Section";
-import Spotlight from "./Spotlight";
+import { ExternalIcon, GitHubIcon, LockIcon } from "@/components/ui/Icons";
+import ProjectCover from "@/components/ui/ProjectCover";
+import Reveal from "@/components/ui/Reveal";
+import Section from "@/components/ui/Section";
+import Spotlight from "@/components/ui/Spotlight";
 
 export default function Projects() {
   return (

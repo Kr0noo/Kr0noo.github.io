@@ -1,8 +1,8 @@
 import { certificaciones } from "@/data/portfolio";
-import { BadgeIcon, ExternalIcon } from "./Icons";
-import Reveal from "./Reveal";
-import Section from "./Section";
-import Spotlight from "./Spotlight";
+import { BadgeIcon, ExternalIcon } from "@/components/ui/Icons";
+import Reveal from "@/components/ui/Reveal";
+import Section from "@/components/ui/Section";
+import Spotlight from "@/components/ui/Spotlight";
 
 export default function Certifications() {
   return (

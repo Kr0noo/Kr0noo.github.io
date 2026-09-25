@@ -1,5 +1,5 @@
 import { perfil } from "@/data/portfolio";
-import { GitHubIcon, InstagramIcon, LinkedInIcon, MailIcon } from "./Icons";
+import { GitHubIcon, InstagramIcon, LinkedInIcon, MailIcon } from "@/components/ui/Icons";
 
 export default function Footer() {
   return (

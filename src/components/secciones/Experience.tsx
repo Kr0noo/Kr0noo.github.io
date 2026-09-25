@@ -1,7 +1,7 @@
 import { experiencia } from "@/data/portfolio";
-import Reveal from "./Reveal";
-import Section from "./Section";
-import Spotlight from "./Spotlight";
+import Reveal from "@/components/ui/Reveal";
+import Section from "@/components/ui/Section";
+import Spotlight from "@/components/ui/Spotlight";
 
 export default function Experience() {
   return (

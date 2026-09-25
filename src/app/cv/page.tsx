@@ -16,7 +16,7 @@ import {
   LinkedInIcon,
   MailIcon,
   PhoneIcon,
-} from "@/components/Icons";
+} from "@/components/ui/Icons";
 
 export const metadata: Metadata = {
   title: "Currículum",
