@@ -3,7 +3,7 @@
 import { useRouter } from "next/navigation";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { SearchIcon } from "@/components/ui/Icons";
-import { EVENTO_PALETA } from "@/lib/paleta";
+import { EVENTO_PALETA } from "@/features/command-palette/paleta";
 import { construirComandos } from "./comandos";
 
 

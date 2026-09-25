@@ -1,4 +1,4 @@
-import { perfil, proyectos } from "@/data/portfolio";
+import { perfil, proyectos } from "@/features/portfolio/data/portfolio";
 import { ExternalIcon, GitHubIcon, LockIcon } from "@/components/ui/Icons";
 import ProjectCover from "@/components/ui/ProjectCover";
 import Reveal from "@/components/ui/Reveal";

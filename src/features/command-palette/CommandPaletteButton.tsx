@@ -1,7 +1,7 @@
 "use client";
 
 import { SearchIcon } from "@/components/ui/Icons";
-import { EVENTO_PALETA } from "@/lib/paleta";
+import { EVENTO_PALETA } from "@/features/command-palette/paleta";
 
 /**
  * Vive dentro de la barra de navegación. El diálogo no puede montarse aquí:

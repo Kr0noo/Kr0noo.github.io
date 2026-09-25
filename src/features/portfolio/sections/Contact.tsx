@@ -1,4 +1,4 @@
-import { perfil } from "@/data/portfolio";
+import { perfil } from "@/features/portfolio/data/portfolio";
 import {
   GitHubIcon,
   LinkedInIcon,

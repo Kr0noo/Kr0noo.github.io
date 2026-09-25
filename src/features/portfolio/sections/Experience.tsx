@@ -1,4 +1,4 @@
-import { experiencia } from "@/data/portfolio";
+import { experiencia } from "@/features/portfolio/data/portfolio";
 import Reveal from "@/components/ui/Reveal";
 import Section from "@/components/ui/Section";
 import Spotlight from "@/components/ui/Spotlight";

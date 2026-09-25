@@ -1,4 +1,4 @@
-import { stack } from "@/data/portfolio";
+import { stack } from "@/features/portfolio/data/portfolio";
 import Reveal from "@/components/ui/Reveal";
 import Section from "@/components/ui/Section";
 import Spotlight from "@/components/ui/Spotlight";

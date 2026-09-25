@@ -1,5 +1,5 @@
 import Image from "next/image";
-import type { Proyecto } from "@/data/portfolio";
+import type { Proyecto } from "@/features/portfolio/data/portfolio";
 
 /** Suma de códigos del nombre: da a cada proyecto un ángulo distinto y estable. */
 function semilla(texto: string) {

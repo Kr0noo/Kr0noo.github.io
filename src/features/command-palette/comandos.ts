@@ -1,5 +1,5 @@
 import type { ReactElement } from "react";
-import { navegacion, perfil } from "@/data/portfolio";
+import { navegacion, perfil } from "@/features/portfolio/data/portfolio";
 import {
   CheckIcon,
   CopyIcon,

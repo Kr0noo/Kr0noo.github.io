@@ -1,8 +1,8 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { navegacion, perfil } from "@/data/portfolio";
-import CommandPaletteButton from "./CommandPaletteButton";
+import { navegacion, perfil } from "@/features/portfolio/data/portfolio";
+import CommandPaletteButton from "@/features/command-palette/CommandPaletteButton";
 import ThemeToggle from "./ThemeToggle";
 
 export default function Nav() {

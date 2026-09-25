@@ -1,4 +1,4 @@
-import { analitica } from "@/data/portfolio";
+import { analitica } from "@/features/portfolio/data/portfolio";
 
 /**
  * GoatCounter: sin cookies, sin datos personales y sin banner de consentimiento.

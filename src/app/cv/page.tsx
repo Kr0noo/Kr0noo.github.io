@@ -9,7 +9,7 @@ import {
   perfil,
   proyectos,
   stack,
-} from "@/data/portfolio";
+} from "@/features/portfolio/data/portfolio";
 import {
   DownloadIcon,
   GitHubIcon,

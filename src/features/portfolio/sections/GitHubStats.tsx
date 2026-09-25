@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { perfil } from "@/data/portfolio";
+import { perfil } from "@/features/portfolio/data/portfolio";
 import { GitHubIcon, RepoIcon, StarOutlineIcon, UsersIcon } from "@/components/ui/Icons";
 
 const USUARIO = "Kr0noo";

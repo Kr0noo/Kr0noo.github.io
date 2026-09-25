@@ -1,7 +1,7 @@
 import { readFileSync } from "node:fs";
 import { join } from "node:path";
 import { ImageResponse } from "next/og";
-import { perfil } from "@/data/portfolio";
+import { perfil } from "@/features/portfolio/data/portfolio";
 
 // Con `output: "export"` hay que declarar que la imagen se genera en el build.
 export const dynamic = "force-static";

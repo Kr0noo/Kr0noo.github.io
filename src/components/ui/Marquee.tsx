@@ -1,4 +1,4 @@
-import { stack } from "@/data/portfolio";
+import { stack } from "@/features/portfolio/data/portfolio";
 
 // Se recorre una sola vez el stack para armar la cinta.
 const tecnologias = stack.flatMap((grupo) => grupo.items);

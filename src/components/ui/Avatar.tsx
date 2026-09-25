@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { perfil } from "@/data/portfolio";
+import { perfil } from "@/features/portfolio/data/portfolio";
 
 /** Foto de perfil con anillo de gradiente giratorio y resplandor detrás. */
 export default function Avatar({ tamano = 200 }: { tamano?: number }) {

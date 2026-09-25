@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import Analytics from "@/components/seo/Analytics";
 import JsonLd from "@/components/seo/JsonLd";
-import { perfil } from "@/data/portfolio";
+import { perfil } from "@/features/portfolio/data/portfolio";
 import "./globals.css";
 
 const sans = Geist({ variable: "--font-sans-stack", subsets: ["latin"] });

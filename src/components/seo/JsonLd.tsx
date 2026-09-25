@@ -4,7 +4,7 @@ import {
   experiencia,
   perfil,
   stack,
-} from "@/data/portfolio";
+} from "@/features/portfolio/data/portfolio";
 
 const SITIO = "https://kr0noo.github.io";
 

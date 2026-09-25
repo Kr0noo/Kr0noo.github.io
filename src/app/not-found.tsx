@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { perfil } from "@/data/portfolio";
+import { perfil } from "@/features/portfolio/data/portfolio";
 
 export const metadata = { title: "Página no encontrada" };
 

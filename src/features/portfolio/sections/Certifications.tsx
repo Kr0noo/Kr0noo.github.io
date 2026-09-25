@@ -1,4 +1,4 @@
-import { certificaciones } from "@/data/portfolio";
+import { certificaciones } from "@/features/portfolio/data/portfolio";
 import { BadgeIcon, ExternalIcon } from "@/components/ui/Icons";
 import Reveal from "@/components/ui/Reveal";
 import Section from "@/components/ui/Section";

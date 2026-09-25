@@ -1,4 +1,4 @@
-import { datosRapidos, educacion, perfil, sobreMi } from "@/data/portfolio";
+import { datosRapidos, educacion, perfil, sobreMi } from "@/features/portfolio/data/portfolio";
 import Counter from "@/components/ui/Counter";
 import GitHubStats from "./GitHubStats";
 import { GraduationIcon, StarIcon } from "@/components/ui/Icons";

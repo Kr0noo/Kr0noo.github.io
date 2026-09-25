@@ -1,15 +1,15 @@
-import About from "@/components/secciones/About";
-import Certifications from "@/components/secciones/Certifications";
-import CommandPalette from "@/components/layout/CommandPalette";
-import Contact from "@/components/secciones/Contact";
-import Experience from "@/components/secciones/Experience";
+import About from "@/features/portfolio/sections/About";
+import Certifications from "@/features/portfolio/sections/Certifications";
+import CommandPalette from "@/features/command-palette/CommandPalette";
+import Contact from "@/features/portfolio/sections/Contact";
+import Experience from "@/features/portfolio/sections/Experience";
 import Footer from "@/components/layout/Footer";
-import Hero from "@/components/secciones/Hero";
+import Hero from "@/features/portfolio/sections/Hero";
 import Marquee from "@/components/ui/Marquee";
 import Nav from "@/components/layout/Nav";
-import Projects from "@/components/secciones/Projects";
+import Projects from "@/features/portfolio/sections/Projects";
 import ScrollProgress from "@/components/layout/ScrollProgress";
-import Skills from "@/components/secciones/Skills";
+import Skills from "@/features/portfolio/sections/Skills";
 
 export default function Home() {
   return (
