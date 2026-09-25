@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { navegacion, perfil } from "@/data/portfolio";
 import CommandPaletteButton from "./CommandPaletteButton";
 import ThemeToggle from "./ThemeToggle";
@@ -9,6 +9,10 @@ export default function Nav() {
   const [desplazado, setDesplazado] = useState(false);
   const [abierto, setAbierto] = useState(false);
   const [activo, setActivo] = useState<string>("");
+
+  const cabeceraRef = useRef<HTMLElement>(null);
+  const botonRef = useRef<HTMLButtonElement>(null);
+  const menuRef = useRef<HTMLUListElement>(null);
 
   useEffect(() => {
     const alScroll = () => setDesplazado(window.scrollY > 12);
@@ -39,10 +43,71 @@ export default function Nav() {
     return () => observer.disconnect();
   }, []);
 
+  /**
+   * Con el menú abierto: Escape lo cierra, un toque fuera lo cierra y el
+   * tabulador no se escapa al contenido de detrás.
+   */
+  useEffect(() => {
+    if (!abierto) return;
+
+    const alPulsar = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        setAbierto(false);
+        botonRef.current?.focus();
+        return;
+      }
+
+      if (e.key !== "Tab") return;
+
+      const candidatos = cabeceraRef.current?.querySelectorAll<HTMLElement>(
+        "a[href], button:not([disabled])",
+      );
+      if (!candidatos) return;
+
+      // El menú de escritorio sigue en el DOM pero oculto en móvil, y un
+      // elemento con `display: none` no acepta foco: `offsetParent` lo delata.
+      const foco = [...candidatos].filter((el) => el.offsetParent !== null);
+      if (foco.length === 0) return;
+
+      const primero = foco[0];
+      const ultimo = foco[foco.length - 1];
+
+      if (e.shiftKey && document.activeElement === primero) {
+        e.preventDefault();
+        ultimo.focus();
+      } else if (!e.shiftKey && document.activeElement === ultimo) {
+        e.preventDefault();
+        primero.focus();
+      }
+    };
+
+    const alTocarFuera = (e: PointerEvent) => {
+      if (!cabeceraRef.current?.contains(e.target as Node)) setAbierto(false);
+    };
+
+    document.addEventListener("keydown", alPulsar);
+    document.addEventListener("pointerdown", alTocarFuera);
+    return () => {
+      document.removeEventListener("keydown", alPulsar);
+      document.removeEventListener("pointerdown", alTocarFuera);
+    };
+  }, [abierto]);
+
+  // Al abrirlo, el foco entra en el primer enlace del menú.
+  useEffect(() => {
+    if (!abierto) return;
+    const t = setTimeout(
+      () => menuRef.current?.querySelector("a")?.focus(),
+      0,
+    );
+    return () => clearTimeout(t);
+  }, [abierto]);
+
   return (
     <header
+      ref={cabeceraRef}
       className={`sin-imprimir fixed inset-x-0 top-0 z-50 transition-colors duration-300 ${
-        desplazado
+        desplazado || abierto
           ? "border-b border-border bg-bg/85 backdrop-blur-md"
           : "border-b border-transparent"
       }`}
@@ -86,6 +151,7 @@ export default function Nav() {
           </a>
           <ThemeToggle />
           <button
+            ref={botonRef}
             type="button"
             onClick={() => setAbierto((v) => !v)}
             aria-expanded={abierto}
@@ -114,6 +180,7 @@ export default function Nav() {
 
       {abierto && (
         <ul
+          ref={menuRef}
           id="menu-movil"
           className="border-t border-border bg-bg/95 px-4 py-2 backdrop-blur-md md:hidden"
         >
@@ -128,6 +195,15 @@ export default function Nav() {
               </a>
             </li>
           ))}
+          <li>
+            <a
+              href="/cv/"
+              onClick={() => setAbierto(false)}
+              className="block rounded-lg px-2 py-3 text-sm text-muted transition hover:text-accent sm:hidden"
+            >
+              CV
+            </a>
+          </li>
         </ul>
       )}
     </header>

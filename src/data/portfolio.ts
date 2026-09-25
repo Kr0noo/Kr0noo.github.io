@@ -277,6 +277,19 @@ export const idiomas = [
   { idioma: "Inglés", nivel: "Básico" },
 ];
 
+/**
+ * Analítica sin cookies con GoatCounter (gratis para uso personal).
+ *
+ * 1. Crea tu cuenta en https://www.goatcounter.com/signup
+ * 2. Elige un código, por ejemplo "kr0noo"
+ * 3. Escríbelo abajo. Con la cadena vacía no se carga ningún script.
+ *
+ * Tus visitas se verán en https://TU-CODIGO.goatcounter.com
+ */
+export const analitica = {
+  goatcounter: "",
+};
+
 export const navegacion = [
   { href: "#sobre-mi", texto: "Sobre mí" },
   { href: "#experiencia", texto: "Experiencia" },
