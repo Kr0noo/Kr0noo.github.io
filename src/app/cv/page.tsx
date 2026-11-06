@@ -57,7 +57,7 @@ export default function CV() {
     <main className="mx-auto w-full max-w-3xl px-4 py-16 sm:px-6 sm:py-24">
       <Link
         href="/"
-        className="font-mono text-sm text-muted transition hover:text-accent"
+        className="sin-imprimir font-mono text-sm text-muted transition hover:text-accent"
       >
         ← Volver al portafolio
       </Link>
@@ -100,7 +100,7 @@ export default function CV() {
           </li>
         ))}
         {perfil.cv && (
-          <li>
+          <li className="sin-imprimir">
             <a
               href={perfil.cv}
               download

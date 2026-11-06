@@ -291,11 +291,21 @@ body {
     padding: 0 !important;
   }
 
-  /* Evita cortar una tarjeta o un puesto a mitad de página. */
-  section,
+  /* Evita cortar un puesto o una tarjeta a mitad de página, pero deja
+     que una sección larga (Proyectos) continúe en la hoja siguiente. */
   article,
   li {
     break-inside: avoid;
+  }
+
+  h2,
+  h3 {
+    break-after: avoid;
+  }
+
+  section {
+    padding-top: 1.25rem !important;
+    margin-top: 1.25rem !important;
   }
 
   a {
