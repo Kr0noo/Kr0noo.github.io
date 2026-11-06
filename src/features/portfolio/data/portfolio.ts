@@ -116,6 +116,7 @@ export const stack = [
       "APIs REST",
       "Microservicios",
       ".NET",
+      "Testing",
     ],
   },
   {
@@ -127,7 +128,9 @@ export const stack = [
     items: [
       "AWS",
       "Docker",
+      "CI/CD",
       "MySQL",
+      "PostgreSQL",
       "Hostinger",
       "Linux",
       "Power BI",
@@ -136,7 +139,7 @@ export const stack = [
   },
   {
     categoria: "Metodologías & Herramientas",
-    items: ["Scrum", "RAD", "Jira", "Git", "GitHub", "Excel"],
+    items: ["Scrum", "RAD", "Jira", "Git", "GitHub", "Unity", "Excel"],
   },
 ];
 
