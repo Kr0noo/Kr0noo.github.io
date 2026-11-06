@@ -220,6 +220,7 @@ export const proyectos: Proyecto[] = [
       "Karts, personajes y pistas modelados en Blender con scripts propios de exportación a glTF; despliegue en Docker con Caddy como proxy inverso.",
     ],
     tecnologias: ["Babylon.js", "JavaScript", "Node.js", "WebSocket", "Blender", "Docker"],
+    demo: "https://codea-racing.187-77-227-177.sslip.io/",
     privado: true,
     destacado: true,
   },
