@@ -120,7 +120,7 @@ export default function CV() {
             <p className="font-mono text-xs text-muted">{educacion.periodo}</p>
           </div>
           <p className="mt-1 text-sm text-muted">
-            {educacion.carrera} · {educacion.ciclo} · {educacion.ubicacion}
+            {educacion.grado} · {educacion.ubicacion}
           </p>
           <p className="mt-2 text-sm text-muted">
             Promedio ponderado:{" "}

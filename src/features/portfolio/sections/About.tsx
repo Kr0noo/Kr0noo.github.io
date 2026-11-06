@@ -35,7 +35,7 @@ export default function About() {
                   </div>
 
                   <p className="mt-1 text-sm text-muted">
-                    {educacion.carrera} · {educacion.ciclo}
+                    {educacion.grado}
                   </p>
 
                   <p className="mt-3 text-sm">

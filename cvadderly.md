@@ -4,7 +4,7 @@ Lima, Perú
 
 EDUCACIÓN
 
-Universidad Autonoma del Peru], Lima, Perú — Ingenieria de Sistemas, Xº ciclo
+Universidad Autonoma del Peru], Lima, Perú — Ingeniero de Sistemas
 Promedio ponderado 17/20.
 Reconocimientos: Doble Finalista de Expotec 2025-1 y 2025-2.
 

@@ -8,7 +8,7 @@ export const perfil = {
   nombreCompleto: "Adderly Andrés Valverde Ramos",
   alias: "Kr0noo",
   iniciales: "AV",
-  titulo: "Desarrollador FullStack Junior",
+  titulo: "Ingeniero de Sistemas · Desarrollador FullStack",
   // Se escriben y borran en bucle bajo el nombre, en el hero.
   roles: [
     "Desarrollador FullStack",
@@ -17,7 +17,7 @@ export const perfil = {
     "Frontend con Next.js",
   ],
   resumen:
-    "Desarrollo APIs RESTful escalables y las despliego en la nube. Actualmente en CodeaUni, construyendo con Django REST Framework, Next.js y AWS mientras termino Ingeniería de Sistemas.",
+    "Ingeniero de Sistemas. Desarrollo APIs RESTful escalables y las despliego en la nube. Actualmente en CodeaUni, construyendo con Django REST Framework, Next.js y AWS.",
   empresaActual: "CodeaUni",
   ubicacion: "Lima, Perú",
   email: "adderlyramos2@gmail.com",
@@ -31,16 +31,16 @@ export const perfil = {
 };
 
 export const sobreMi = [
-  "Soy desarrollador fullstack junior en CodeaUni, donde construyo y documento APIs RESTful con Django REST Framework y Next.js, y me encargo de la infraestructura cloud en AWS y de servidores Linux.",
+  "Soy Ingeniero de Sistemas y desarrollador fullstack en CodeaUni, donde construyo y documento APIs RESTful con Django REST Framework y Next.js, y me encargo de la infraestructura cloud en AWS y de servidores Linux.",
   "Antes hice prácticas en J&H Partners desarrollando y manteniendo aplicaciones web, integrando APIs REST y corrigiendo problemas de rendimiento. En ambos equipos trabajé con Scrum y RAD.",
-  "En paralelo curso el 10.º ciclo de Ingeniería de Sistemas en la Universidad Autónoma del Perú con 17/20 de promedio ponderado. Me interesa especialmente lo que cruza backend, cloud e inteligencia artificial.",
+  "Soy Ingeniero de Sistemas por la Universidad Autónoma del Perú, con 17/20 de promedio ponderado. Me interesa especialmente lo que cruza backend, cloud e inteligencia artificial.",
 ];
 
 export const educacion = {
   institucion: "Universidad Autónoma del Perú",
   carrera: "Ingeniería de Sistemas",
-  ciclo: "10.º ciclo",
-  periodo: "2022 – Presente",
+  grado: "Ingeniero de Sistemas",
+  periodo: "2022 – 2026",
   ubicacion: "Lima, Perú",
   promedio: "17 / 20",
   reconocimientos: ["Doble finalista de Expotec 2025-1 y 2025-2"],
@@ -53,7 +53,7 @@ export const datosRapidos: {
   numero?: number;
   sufijo?: string;
 }[] = [
-  { etiqueta: "Ciclo", valor: "10.º", numero: 10, sufijo: ".º" },
+  { etiqueta: "Formación", valor: "Ing. de Sistemas" },
   { etiqueta: "Promedio ponderado", valor: "17 / 20" },
   { etiqueta: "Certificaciones", valor: "8", numero: 8 },
   { etiqueta: "Idiomas", valor: "Español nativo · Inglés básico" },
@@ -192,6 +192,49 @@ export const proyectos: Proyecto[] = [
     demo: "https://metaminingmedia.com/qrcodea",
     privado: true,
     destacado: true,
+  },
+  {
+    nombre: "CDSS - Codea Discrete Simulation Studio",
+    tipo: "En producción",
+    descripcion:
+      "Aplicación de escritorio para simular el acarreo minero con eventos discretos: se dibuja la mina en un lienzo CAD 2D y se genera y anima un modelo GPSS.",
+    detalles: [
+      "Motor de eventos discretos propio compatible con GPSS, validado estadísticamente contra GPSS World con un informe de verificación por versión.",
+      "Lienzo CAD donde se colocan palas, descargas, cruces y garaje; de ahí se genera un modelo GPSS de ciclo cerrado con tráfico anti-rebase en carril único.",
+      "Arquitectura hexagonal (dominio puro, casos de uso, adaptadores Electron) verificada con pruebas de dependencias.",
+      "Sistema de licencias con almacén cifrado, servicio en Supabase y empaquetado como instalador y portable para Windows.",
+    ],
+    tecnologias: ["Electron", "React", "TypeScript", "Vite", "Vitest", "Supabase", "GPSS"],
+    privado: true,
+    destacado: true,
+  },
+  {
+    nombre: "Codea Racing Perú",
+    tipo: "En desarrollo",
+    descripcion:
+      "Videojuego de carreras de karts por los barrios de Lima que corre en el navegador, con multijugador en salas públicas y privadas.",
+    detalles: [
+      "Motor 3D con Babylon.js: derrape con medidor de carga, turbo, ítems, habilidades y partículas; controles por teclado, mando o pantalla táctil.",
+      "Servidor Node.js sin dependencias que sirve el juego y sincroniza hasta 7 jugadores por sala mediante WebSocket, con rivales controlados por IA.",
+      "Antitrampas en el servidor: valida cada mensaje (velocidad, teletransportes, vueltas, recargas) y aplica límites por IP, sala y mensajes por segundo.",
+      "Karts, personajes y pistas modelados en Blender con scripts propios de exportación a glTF; despliegue en Docker con Caddy como proxy inverso.",
+    ],
+    tecnologias: ["Babylon.js", "JavaScript", "Node.js", "WebSocket", "Blender", "Docker"],
+    privado: true,
+    destacado: true,
+  },
+  {
+    nombre: "Codea Events",
+    tipo: "En producción",
+    descripcion:
+      "Plataforma para gestionar eventos académicos: app móvil para asistentes, panel administrativo y agente de impresión de credenciales.",
+    detalles: [
+      "App móvil en React Native para iOS y Android con notificaciones push de Firebase, agenda, QR de acceso y multimedia.",
+      "Backend y panel de administración en Django con niveles de acceso, importación masiva de asistentes y gestión de ponentes.",
+      "Agente local en Python que imprime credenciales en impresoras térmicas TSPL respetando el tamaño físico de la etiqueta.",
+    ],
+    tecnologias: ["React Native", "Django", "Firebase", "Python", "Redux Toolkit", "React Query"],
+    privado: true,
   },
   {
     nombre: "Diagnóstico de Neumonía con IA",
